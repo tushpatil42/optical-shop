@@ -1,6 +1,6 @@
 # Step 1: Use Maven image to build the application
 #FROM maven:3.8.6-openjdk-17-slim AS build
-FROM ubuntu:20.04
+FROM debian:bullseye
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
