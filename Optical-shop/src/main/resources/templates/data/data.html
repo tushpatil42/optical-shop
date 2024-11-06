@@ -1,0 +1,128 @@
+<script src="js"></script>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lens & Specs Optical Shop | Pune</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+	<!-- Header Section -->
+	<header>
+		<div class="container">
+			<div class="logo">
+				<h1>Lens & Specs</h1>
+				<p class="tagline">Your Vision, Our Passion</p>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/">Products</a></li>
+					<li><a href="/">Testimonials</a></li>
+					<li><a href="/">Contact</a></li>
+					<li><a href="/cart">Cart (<span th:text="${cartCount}">0</span>)</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+
+	<!-- Products Section -->
+
+	<section id="products" class="products-section">
+		<div class="container">
+			<h3>Customer Feedback</h3>
+			<hr>
+			<table class="table table-bordered table-striped" border="1">
+				<thead>
+					<tr>
+						<th>Customer ID</th>
+						<th>Customer Name</th>
+						<th>Email ID</th>
+						<th>Mobile Number</th>
+						<th>Message From Customer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="data : ${dataList}">
+						<td th:text="${data.cutomerId}"></td>
+						<td th:text="${data.customerName}"></td>
+						<td th:text="${data.email}"></td>
+						<td th:text="${data.mobileNum}"></td>
+						<td th:text="${data.customerMessage}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<a href="/download/excel">Download as Excel</a>
+		</div>
+	</section>
+
+	<!-- Testimonials Section -->
+	<section id="testimonials" class="testimonials-section">
+		<div class="container">
+			<h2>What Our Customers Say</h2>
+			<div class="testimonial-grid">
+				<div class="testimonial">
+					<p>"Amazing quality and great customer service. The glasses are very comfortable!"</p>
+					<h4>Shradha Bothara</h4>
+				</div>
+				<div class="testimonial">
+					<p>"I love my blue light glasses. Perfect for working on my computer all day!"</p>
+					<h4>Deelip Bhorge</h4>
+				</div>
+				<div class="testimonial">
+					<p>"The best optical shop in Pune! High-quality lenses and a wide selection of frames."</p>
+					<h4>Ashwini Bhorge</h4>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="contact-section">
+		<div class="container">
+			<h2>Get In Touch</h2>
+			<p>Lens & Specs Optical Shop</p>
+			<p>Shop No. 04, Manali Arcade, Satara Road, Near Dmart, Pune, Maharashtra - 411009</p>
+			<p>Call us at: <strong>+91 7620798926</strong></p>
+
+			<form id="contact-form" action="/save-customer" th:object="${customer}" method="post">
+				<input type="text" name="name" placeholder="Your Name" th:field="${customer.customerName}" required>
+				<input type="email" name="email" placeholder="Your Email" th:field="${customer.email}" required>
+				<input type="tel" name="mobile" placeholder="Mobile Number" pattern="[0-9]{10}"
+					th:field="${customer.mobileNum}" required>
+				<textarea name="message" placeholder="Your Message" rows="5" th:field="${customer.customerMessage}"
+					required></textarea>
+				<button type="submit" class="btn">Send Message</button>
+			</form>
+		</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<p>&copy; 2024 Lens & Specs Optical Shop, Pune.</p>
+			<p> All rights reserved.</p>
+			<div class="social-icons">
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+				<a href="https://www.facebook.com/manoj.bhorge.77?mibextid=ZbWKwL"><i class="fab fa-instagram"></i></a>
+				<a href="https://www.instagram.com/manoj_.bhorge?igsh=MWtuNzczZDh2ZXFzZA=="><i
+						class="fab fa-linkedin"></i></a> <a
+					href="https://www.linkedin.com/in/manoj-bhorage-630a81287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+			</div>
+		</div>
+	</footer>
+
+	<script src="js/script.js"></script>
+</body>
+
+</html>
