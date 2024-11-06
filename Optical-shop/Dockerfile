@@ -5,8 +5,8 @@ FROM maven:3.8.6-openjdk-11-slim AS build
 WORKDIR /app
 
 # Copy the pom.xml and the source code into the container
-COPY pom.xml .
-COPY src ./src
+COPY ./Optical-shop/pom.xml .
+COPY ./Optical-shop/src ./src
 
 # Step 2: Build the application using Maven (clean and package)
 RUN mvn clean package -DskipTests
@@ -18,7 +18,7 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 
 # Step 4: Copy the built jar from the build image
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build ./Optical-shop/app/target/*.jar app.jar
 
 # Step 5: Expose the port the application will run on (default Spring Boot port is 8080)
 EXPOSE 8080
