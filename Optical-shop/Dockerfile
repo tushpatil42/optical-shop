@@ -1,5 +1,5 @@
 # Step 1: Use Maven image to build the application
-FROM maven:3.8.6-openjdk-11-slim AS build
+FROM maven:3.8.6-openjdk-17-slim AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY ./Optical-shop/src ./src
 RUN mvn clean package -DskipTests
 
 # Step 3: Use a smaller image for running the application
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app
